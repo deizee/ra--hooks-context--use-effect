@@ -6,13 +6,10 @@ const List = (props) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        try {
-            fetch('https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json')
-                .then(response => response.json())
-                .then(data=>setUsers(data))
-        } catch (err) {
-            console.log(err);
-        }
+        fetch('https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json')
+            .then(response => response.json())
+            .then(data => setUsers(data))
+            .catch(err => console.log(err))
     }, []);
 
     return (

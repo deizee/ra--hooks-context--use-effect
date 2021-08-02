@@ -9,17 +9,16 @@ const Details = (props) => {
     useEffect( ()=> {
         if (info) {
             setLoading(true);
-            try {
-                fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id}.json`)
-                    .then(response => response.json())
-                    .then(data=> {
-                        setDetails(data);
-                        setLoading(false);
-                    });
-            } catch (err) {
-                console.log(err);
-                setLoading(false);
-            }
+            fetch(`https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/${info.id}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    setDetails(data);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                    setLoading(false);
+                });
         }
     }, [info]);
 
